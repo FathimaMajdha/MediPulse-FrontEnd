@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from 'react';
 
 export default function Navbar() {
@@ -11,6 +11,13 @@ export default function Navbar() {
         } else {
             setActiveDropdown(dropdown);
         }
+    };
+
+    // Navigation Function (Works without Next.js)
+    const navigateTo = (path) => {
+        setActiveDropdown(null);
+        setMobileMenuOpen(false);
+        window.location.href = path;   // Simple navigation
     };
 
     return (
@@ -27,8 +34,9 @@ export default function Navbar() {
                         </span>
                     </div>
 
-                    {/* Desktop Navigation - Center with Dropdowns */}
+                    {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-1 relative">
+                        
                         {/* For Patients Dropdown */}
                         <div className="relative">
                             <button 
@@ -41,7 +49,6 @@ export default function Navbar() {
                                 </svg>
                             </button>
                             
-                            {/* Patients Dropdown */}
                             {activeDropdown === 'patients' && (
                                 <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 animate-fadeIn">
                                     <div className="px-4 pb-2 border-b border-gray-100">
@@ -49,33 +56,56 @@ export default function Navbar() {
                                         <p className="text-xs text-gray-500">Manage your health journey</p>
                                     </div>
                                     <div className="grid grid-cols-2 gap-2 p-4">
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/patient/appointments')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">📅 Appointments</span>
                                             <span className="text-xs text-gray-500">Schedule & manage visits</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+
+                                         <button 
+                                            onClick={() => navigateTo('/patient/medications')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">💊 Medications</span>
                                             <span className="text-xs text-gray-500">Refills & history</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+
+                                        <button 
+                                            onClick={() => navigateTo('/patient/lab-results')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">🧪 Lab Results</span>
                                             <span className="text-xs text-gray-500">View test results</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+
+                                        <button 
+                                            onClick={() => navigateTo('/patient/medical-records')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">📋 Medical Records</span>
                                             <span className="text-xs text-gray-500">Access your history</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+
+                                         <button 
+                                            onClick={() => navigateTo('/patient/messages')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">💬 Messages</span>
                                             <span className="text-xs text-gray-500">Chat with providers</span>
                                         </button>
+
                                         <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
                                             <span className="block font-medium text-gray-800">💰 Billing</span>
                                             <span className="text-xs text-gray-500">Pay bills & insurance</span>
                                         </button>
                                     </div>
                                     <div className="px-4 pt-2 border-t border-gray-100">
-                                        <button className="w-full text-center text-sm text-[#0057A3] hover:underline py-2">
+                                        <button 
+                                            onClick={() => navigateTo('/patient/dashboard')}
+                                            className="w-full text-center text-sm text-[#0057A3] hover:underline py-2"
+                                        >
                                             View Patient Dashboard →
                                         </button>
                                     </div>
@@ -95,7 +125,6 @@ export default function Navbar() {
                                 </svg>
                             </button>
                             
-                            {/* Providers Dropdown */}
                             {activeDropdown === 'providers' && (
                                 <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-4 animate-fadeIn">
                                     <div className="px-4 pb-2 border-b border-gray-100">
@@ -129,7 +158,10 @@ export default function Navbar() {
                                         </button>
                                     </div>
                                     <div className="px-4 pt-2 border-t border-gray-100">
-                                        <button className="w-full text-center text-sm text-[#0057A3] hover:underline py-2">
+                                        <button 
+                                            onClick={() => navigateTo('/provider/dashboard')}
+                                            className="w-full text-center text-sm text-[#0057A3] hover:underline py-2"
+                                        >
                                             Open Provider Dashboard →
                                         </button>
                                     </div>
@@ -149,7 +181,6 @@ export default function Navbar() {
                                 </svg>
                             </button>
                             
-                            {/* Features Dropdown */}
                             {activeDropdown === 'features' && (
                                 <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-4 animate-fadeIn">
                                     <div className="px-4 pb-2 border-b border-gray-100">
@@ -181,8 +212,11 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        {/* Pricing - Simple Button (No Dropdown) */}
-                        <button className="px-4 py-2 text-gray-700 hover:text-[#0057A3] hover:bg-[#E6F0FA] rounded-lg transition-all duration-200 font-medium">
+                        {/* Pricing */}
+                        <button 
+                            onClick={() => navigateTo('/pricing')}
+                            className="px-4 py-2 text-gray-700 hover:text-[#0057A3] hover:bg-[#E6F0FA] rounded-lg transition-all duration-200 font-medium"
+                        >
                             Pricing
                         </button>
 
@@ -198,7 +232,6 @@ export default function Navbar() {
                                 </svg>
                             </button>
                             
-                            {/* Resources Dropdown */}
                             {activeDropdown === 'resources' && (
                                 <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-fadeIn">
                                     <button className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors">
@@ -228,7 +261,7 @@ export default function Navbar() {
 
                     {/* Right Side Actions */}
                     <div className="flex items-center space-x-3">
-                        {/* Search with Dropdown */}
+                        {/* Search */}
                         <div className="relative">
                             <button 
                                 className="p-2 text-gray-500 hover:text-[#0057A3] hover:bg-[#E6F0FA] rounded-lg transition-all duration-200"
@@ -239,7 +272,6 @@ export default function Navbar() {
                                 </svg>
                             </button>
                             
-                            {/* Search Dropdown */}
                             {activeDropdown === 'search' && (
                                 <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 p-4 animate-fadeIn">
                                     <input 
@@ -247,14 +279,11 @@ export default function Navbar() {
                                         placeholder="Search patients, providers, resources..." 
                                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0057A3] focus:border-transparent"
                                     />
-                                    <div className="mt-2 text-xs text-gray-500">
-                                        Quick links: 📅 Appointments • 💊 Medications • 👨‍⚕️ Providers
-                                    </div>
                                 </div>
                             )}
                         </div>
 
-                        {/* Notifications Dropdown */}
+                        {/* Notifications */}
                         <div className="relative">
                             <button 
                                 className="p-2 text-gray-500 hover:text-[#0057A3] hover:bg-[#E6F0FA] rounded-lg transition-all duration-200 relative"
@@ -266,7 +295,6 @@ export default function Navbar() {
                                 <span className="absolute top-1 right-1 w-2 h-2 bg-[#FF6B6B] rounded-full"></span>
                             </button>
                             
-                            {/* Notifications Dropdown */}
                             {activeDropdown === 'notifications' && (
                                 <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-fadeIn">
                                     <div className="px-4 py-2 border-b border-gray-100">
@@ -283,26 +311,6 @@ export default function Navbar() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="px-4 py-3 hover:bg-[#E6F0FA] border-b border-gray-50">
-                                            <div className="flex items-start space-x-3">
-                                                <span className="text-blue-500">💊</span>
-                                                <div>
-                                                    <p className="text-sm font-medium">Refill Request</p>
-                                                    <p className="text-xs text-gray-500">Maria Garcia - Metformin</p>
-                                                    <p className="text-xs text-gray-400 mt-1">15 min ago</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="px-4 py-3 hover:bg-[#E6F0FA]">
-                                            <div className="flex items-start space-x-3">
-                                                <span className="text-green-500">📅</span>
-                                                <div>
-                                                    <p className="text-sm font-medium">Appointment Reminder</p>
-                                                    <p className="text-xs text-gray-500">Robert Martinez in 30 min</p>
-                                                    <p className="text-xs text-gray-400 mt-1">30 min ago</p>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div className="px-4 py-2 border-t border-gray-100">
                                         <button className="text-sm text-[#0057A3] hover:underline">View all notifications</button>
@@ -311,7 +319,6 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        {/* Divider */}
                         <div className="h-6 w-px bg-gray-200"></div>
 
                         {/* Auth Buttons */}
@@ -326,7 +333,7 @@ export default function Navbar() {
                             </svg>
                         </button>
 
-                        {/* Mobile menu button */}
+                        {/* Mobile Menu Button */}
                         <button 
                             className="md:hidden p-2 text-gray-500 hover:text-[#0057A3] hover:bg-[#E6F0FA] rounded-lg"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -338,11 +345,20 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                {/* Mobile Menu (Expanded) */}
+                {/* Mobile Menu */}
                 {mobileMenuOpen && (
-                    <div className="md:hidden pb-4 space-y-2">
-                        <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
-                            👤 For Patients
+                    <div className="md:hidden pb-6 space-y-1 px-4">
+                        <button 
+                            onClick={() => navigateTo('/patient/appointments')}
+                            className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium"
+                        >
+                            📅 Appointments
+                        </button>
+                        <button 
+                            onClick={() => navigateTo('/patient/dashboard')}
+                            className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium"
+                        >
+                            👤 Patient Dashboard
                         </button>
                         <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
                             👨‍⚕️ For Providers
@@ -350,20 +366,15 @@ export default function Navbar() {
                         <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
                             ✨ Features
                         </button>
-                        <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
+                        <button 
+                            onClick={() => navigateTo('/pricing')}
+                            className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium"
+                        >
                             💰 Pricing
                         </button>
                         <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
                             📚 Resources
                         </button>
-                        <div className="border-t border-gray-200 pt-2 mt-2">
-                            <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
-                                🔍 Search
-                            </button>
-                            <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
-                                🔔 Notifications (3)
-                            </button>
-                        </div>
                     </div>
                 )}
             </div>
@@ -379,17 +390,11 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Add this CSS for animations */}
+            {/* Animation Styles */}
             <style jsx>{`
                 @keyframes fadeIn {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-10px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
+                    from { opacity: 0; transform: translateY(-10px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
                 .animate-fadeIn {
                     animation: fadeIn 0.2s ease-out;
