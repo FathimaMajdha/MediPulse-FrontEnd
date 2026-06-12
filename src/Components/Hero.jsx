@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Hero() {
+    const navigate = useNavigate();
+
     return (
         <div className="bg-gradient-to-br from-blue-50 via-white to-green-50">
             {/* Main Hero Container */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10 w-full">
                 
                 {/* Grid Layout - Left Content, Right Visual */}
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -34,9 +37,12 @@ export default function Hero() {
 
                         {/* CTA Buttons */}
                         <div className="flex flex-wrap gap-4">
-                            <button className="px-8 py-4 bg-[#0057A3] text-white rounded-xl hover:bg-[#003F7A] transition-all duration-200 shadow-lg hover:shadow-xl font-semibold flex items-center space-x-2">
+                            <button 
+                                onClick={() => navigate('/pricing')}
+                                className="px-8 py-4 bg-[#0057A3] text-white rounded-xl hover:bg-[#003F7A] transition-all duration-200 shadow-lg hover:shadow-xl font-semibold flex items-center space-x-2 group"
+                            >
                                 <span>🚀 Get Started Free</span>
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
@@ -65,10 +71,11 @@ export default function Hero() {
                         {/* Trust Indicators */}
                         <div className="flex items-center space-x-4 pt-4">
                             <div className="flex -space-x-2">
-                                <img className="w-8 h-8 rounded-full border-2 border-white" src="/api/placeholder/32/32" alt="Provider" />
-                                <img className="w-8 h-8 rounded-full border-2 border-white" src="/api/placeholder/32/32" alt="Provider" />
-                                <img className="w-8 h-8 rounded-full border-2 border-white" src="/api/placeholder/32/32" alt="Provider" />
-                                <img className="w-8 h-8 rounded-full border-2 border-white" src="/api/placeholder/32/32" alt="Provider" />
+                                {[1,2,3,4].map((i) => (
+                                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center">
+                                        <span className="text-xs">👩‍⚕️</span>
+                                    </div>
+                                ))}
                             </div>
                             <div className="text-sm text-gray-600">
                                 <span className="font-semibold">2,500+</span> providers joined this month
@@ -90,7 +97,9 @@ export default function Hero() {
                                         <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                                     </div>
                                     <span className="text-white text-sm font-medium">Dr. Sarah Chen - Dashboard</span>
-                                    <span className="text-white text-xs">🟢 Live</span>
+                                    <span className="text-white text-xs flex items-center gap-1 font-bold">
+                                        🟢 Live
+                                    </span>
                                 </div>
                             </div>
 

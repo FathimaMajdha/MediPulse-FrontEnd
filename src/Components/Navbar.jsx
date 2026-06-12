@@ -1,9 +1,10 @@
-"use client";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const toggleDropdown = (dropdown) => {
         if (activeDropdown === dropdown) {
@@ -13,11 +14,10 @@ export default function Navbar() {
         }
     };
 
-    // Navigation Function (Works without Next.js)
     const navigateTo = (path) => {
         setActiveDropdown(null);
         setMobileMenuOpen(false);
-        window.location.href = path;   // Simple navigation
+        navigate(path);
     };
 
     return (
@@ -26,7 +26,10 @@ export default function Navbar() {
                 <div className="flex justify-between items-center h-16">
                     
                     {/* Logo Section */}
-                    <div className="flex items-center space-x-3">
+                    <div 
+                        className="flex items-center space-x-3 cursor-pointer"
+                        onClick={() => navigateTo('/')}
+                    >
                         <span className="text-2xl">🏥</span>
                         <span className="font-bold text-xl text-[#0057A3]">MediPulse</span>
                         <span className="hidden md:inline-block px-2 py-1 bg-[#E6F0FA] text-[#0057A3] text-xs font-semibold rounded-full">
@@ -96,7 +99,10 @@ export default function Navbar() {
                                             <span className="text-xs text-gray-500">Chat with providers</span>
                                         </button>
 
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/patient/billing')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">💰 Billing</span>
                                             <span className="text-xs text-gray-500">Pay bills & insurance</span>
                                         </button>
@@ -132,27 +138,45 @@ export default function Navbar() {
                                         <p className="text-xs text-gray-500">Tools for healthcare professionals</p>
                                     </div>
                                     <div className="grid grid-cols-2 gap-2 p-4">
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/provider/soap-notes')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">📋 SOAP Notes</span>
                                             <span className="text-xs text-gray-500">Clinical documentation</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/provider/eprescribe')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">💊 E-Prescribe</span>
                                             <span className="text-xs text-gray-500">Digital prescriptions</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/provider/lab-orders')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">🧪 Lab Orders</span>
                                             <span className="text-xs text-gray-500">Order & review results</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/provider/schedule')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">📅 Schedule</span>
                                             <span className="text-xs text-gray-500">Manage appointments</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/provider/patients')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">👥 Patient List</span>
                                             <span className="text-xs text-gray-500">View all patients</span>
                                         </button>
-                                        <button className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/provider/analytics')}
+                                            className="text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">📊 Analytics</span>
                                             <span className="text-xs text-gray-500">Practice insights</span>
                                         </button>
@@ -187,23 +211,38 @@ export default function Navbar() {
                                         <h3 className="font-semibold text-[#0057A3]">Platform Features</h3>
                                     </div>
                                     <div className="p-2">
-                                        <button className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/features/ehr-management')}
+                                            className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">🏥 EHR Management</span>
                                             <span className="text-xs text-gray-500">Complete electronic health records</span>
                                         </button>
-                                        <button className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/features/hipaa-compliance')}
+                                            className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">🔐 HIPAA Compliance</span>
                                             <span className="text-xs text-gray-500">Enterprise-grade security</span>
                                         </button>
-                                        <button className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/features/lab-integration')}
+                                            className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">🔄 Lab Integration</span>
                                             <span className="text-xs text-gray-500">Seamless lab connectivity</span>
                                         </button>
-                                        <button className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/features/mobile-access')}
+                                            className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">📱 Mobile Access</span>
                                             <span className="text-xs text-gray-500">Apps for iOS & Android</span>
                                         </button>
-                                        <button className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors">
+                                        <button 
+                                            onClick={() => navigateTo('/features/ai-assistance')}
+                                            className="w-full text-left p-3 hover:bg-[#E6F0FA] rounded-lg transition-colors"
+                                        >
                                             <span className="block font-medium text-gray-800">🤖 AI Assistance</span>
                                             <span className="text-xs text-gray-500">Clinical decision support</span>
                                         </button>
@@ -234,23 +273,38 @@ export default function Navbar() {
                             
                             {activeDropdown === 'resources' && (
                                 <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-fadeIn">
-                                    <button className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors">
+                                    <button 
+                                        onClick={() => navigateTo('/resources/blog')}
+                                        className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors"
+                                    >
                                         <span className="block font-medium">📚 Blog</span>
                                         <span className="text-xs text-gray-500">Healthcare insights</span>
                                     </button>
-                                    <button className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors">
+                                    <button 
+                                        onClick={() => navigateTo('/resources/case-studies')}
+                                        className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors"
+                                    >
                                         <span className="block font-medium">📄 Case Studies</span>
                                         <span className="text-xs text-gray-500">Success stories</span>
                                     </button>
-                                    <button className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors">
+                                    <button 
+                                        onClick={() => navigateTo('/resources/webinars')}
+                                        className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors"
+                                    >
                                         <span className="block font-medium">🎓 Webinars</span>
                                         <span className="text-xs text-gray-500">Training & education</span>
                                     </button>
-                                    <button className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors">
+                                    <button 
+                                        onClick={() => navigateTo('/resources/faq')}
+                                        className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors"
+                                    >
                                         <span className="block font-medium">❓ FAQ</span>
                                         <span className="text-xs text-gray-500">Common questions</span>
                                     </button>
-                                    <button className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors border-t border-gray-100">
+                                    <button 
+                                        onClick={() => navigateTo('/resources/support')}
+                                        className="w-full text-left px-4 py-3 hover:bg-[#E6F0FA] hover:text-[#0057A3] transition-colors border-t border-gray-100"
+                                    >
                                         <span className="block font-medium">📞 Support Center</span>
                                         <span className="text-xs text-gray-500">24/7 assistance</span>
                                     </button>
@@ -360,10 +414,16 @@ export default function Navbar() {
                         >
                             👤 Patient Dashboard
                         </button>
-                        <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
+                        <button 
+                            onClick={() => navigateTo('/provider/dashboard')}
+                            className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium"
+                        >
                             👨‍⚕️ For Providers
                         </button>
-                        <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
+                        <button 
+                            onClick={() => navigateTo('/features/ehr-management')}
+                            className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium"
+                        >
                             ✨ Features
                         </button>
                         <button 
@@ -372,7 +432,10 @@ export default function Navbar() {
                         >
                             💰 Pricing
                         </button>
-                        <button className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium">
+                        <button 
+                            onClick={() => navigateTo('/resources/blog')}
+                            className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-[#E6F0FA] hover:text-[#0057A3] rounded-lg font-medium"
+                        >
                             📚 Resources
                         </button>
                     </div>
