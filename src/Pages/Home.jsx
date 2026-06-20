@@ -91,6 +91,7 @@ function StarRating({ rating }) {
 }
 
 export function Home() {
+  
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
   const displayedTestimonials = showAllTestimonials ? testimonials : testimonials.slice(0, 3);
 
