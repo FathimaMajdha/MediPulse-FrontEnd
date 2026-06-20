@@ -68,7 +68,7 @@ export function ProviderDashboard() {
         <Stat label="Total Patients" value="2,847" delta="+12.4% this month" icon={Users} />
         <Stat label="Today's Appointments" value="58" delta="+8 vs yesterday" icon={CalendarCheck} />
         <Stat label="Critical Cases" value="7" delta="2 newly admitted" icon={HeartPulse} />
-        <Stat label="Weekly Revenue" value="$54.5K" delta="+6.2% WoW" icon={DollarSign} />
+        <Stat label="Weekly Revenue" value="₹54.5K" delta="+6.2% WoW" icon={DollarSign} />
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
@@ -187,7 +187,7 @@ export function ProviderDashboard() {
         <Card className="shadow-soft">
           <CardHeader>
             <CardTitle className="font-display text-lg">Revenue</CardTitle>
-            <p className="text-xs text-muted-foreground">Weekly, in USD</p>
+            <p className="text-xs text-muted-foreground">Weekly, in Rupees</p>
           </CardHeader>
           <CardContent className="h-64">
             <ResponsiveContainer width="100%" height="100%">

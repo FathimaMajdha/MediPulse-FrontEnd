@@ -6,10 +6,10 @@ import { Button } from "../../components/Button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/Table";
 
 const invoices = [
-  { id: "INV-2402", date: "Jun 10, 2026", description: "Annual physical exam", amount: 320.0, status: "Paid" },
-  { id: "INV-2401", date: "May 22, 2026", description: "Dermatology consult", amount: 180.0, status: "Paid" },
-  { id: "INV-2400", date: "Jun 14, 2026", description: "Pulmonology follow-up", amount: 95.5, status: "Scheduled" },
-  { id: "INV-2399", date: "Apr 14, 2026", description: "Vaccination", amount: 45.0, status: "Paid" },
+  { id: "INV-2402", date: "Jun 10, 2026", description: "Annual physical exam", amount: 2400.0, status: "Paid" },
+  { id: "INV-2401", date: "May 22, 2026", description: "Dermatology consult", amount: 300.0, status: "Paid" },
+  { id: "INV-2400", date: "Jun 14, 2026", description: "Pulmonology follow-up", amount: 800.5, status: "Scheduled" },
+  { id: "INV-2399", date: "Apr 14, 2026", description: "Vaccination", amount: 450.0, status: "Paid" },
 ];
 
 export function PatientBilling() {
@@ -29,14 +29,14 @@ export function PatientBilling() {
         <Card className="shadow-soft">
           <CardContent className="p-5">
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Current balance</div>
-            <div className="mt-2 font-display text-3xl font-semibold">$95.50</div>
+            <div className="mt-2 font-display text-3xl font-semibold">₹1200.00</div>
             <div className="mt-1 text-xs text-muted-foreground">Due Jun 30, 2026</div>
           </CardContent>
         </Card>
         <Card className="shadow-soft">
           <CardContent className="p-5">
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Paid this year</div>
-            <div className="mt-2 font-display text-3xl font-semibold">$1,245</div>
+            <div className="mt-2 font-display text-3xl font-semibold">₹3,150.00</div>
             <div className="mt-1 text-xs text-muted-foreground">Across 8 invoices</div>
           </CardContent>
         </Card>
@@ -47,7 +47,7 @@ export function PatientBilling() {
             </div>
             <div className="mt-2 text-sm font-semibold">Blue Cross PPO</div>
             <div className="text-xs text-muted-foreground">Member #BC-99-241-587</div>
-            <div className="mt-2 text-xs text-muted-foreground">Deductible: $480 / $1,500 met</div>
+            <div className="mt-2 text-xs text-muted-foreground">Deductible: ₹480 / ₹1,500 met</div>
           </CardContent>
         </Card>
       </div>
@@ -81,7 +81,7 @@ export function PatientBilling() {
                   </TableCell>
                   <TableCell>{i.description}</TableCell>
                   <TableCell className="text-muted-foreground">{i.date}</TableCell>
-                  <TableCell className="font-medium">${i.amount.toFixed(2)}</TableCell>
+                  <TableCell className="font-medium">₹{i.amount.toFixed(2)}</TableCell>
                   <TableCell>
                     <StatusBadge status={i.status} />
                   </TableCell>
