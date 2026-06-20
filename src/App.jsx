@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
+ import { Home } from "./pages/Home.jsx";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 
@@ -21,6 +21,8 @@ import { ProviderAppointments } from "./pages/Provider/Appointments";
 import { ProviderNotes } from "./pages/Provider/Notes";
 import { ProviderPrescriptions } from "./pages/Provider/Prescriptions";
 
+// The Home component is defined below in this file, so no import needed!
+
 function App() {
   return (
     <BrowserRouter
@@ -30,7 +32,7 @@ function App() {
       }}
     >
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} /> {/* This now works! */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
@@ -58,4 +60,5 @@ function App() {
   );
 }
 
+// ... rest of your code (Home, PortalCard, FeatureCard, StarRating components)
 export default App;
