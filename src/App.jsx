@@ -1,25 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
- import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
+ import { Home } from "./Pages/Home";
+import { Login } from "./Pages/Login";
+import { Register } from "./Pages/Register";
 
 // Patient imports
-import { PatientLayout } from "./pages/Patient/Layout";
-import { PatientDashboard } from "./pages/Patient/Dashboard";
-import { PatientAppointments } from "./pages/Patient/Appointments";
-import { PatientRecords } from "./pages/Patient/Records";
-import { PatientPrescriptions } from "./pages/Patient/Prescriptions";
-import { PatientMessages } from "./pages/Patient/Messages";
-import { PatientBilling } from "./pages/Patient/Billing";
+import { PatientLayout } from "./Pages/Patient/Layout";
+import { PatientDashboard } from "./Pages/Patient/Dashboard";
+import { PatientAppointments } from "./Pages/Patient/Appointments";
+import { PatientRecords } from "./Pages/Patient/Records";
+import { PatientPrescriptions } from "./Pages/Patient/Prescriptions";
+import { PatientMessages } from "./Pages/Patient/Messages";
+import { PatientBilling } from "./Pages/Patient/Billing";
 
 // Provider imports
-import { ProviderLayout } from "./pages/Provider/Layout";
-import { ProviderDashboard } from "./pages/Provider/Dashboard";
-import { ProviderPatients } from "./pages/Provider/Patients";
-import { ProviderDoctors } from "./pages/Provider/Doctors";
-import { ProviderAppointments } from "./pages/Provider/Appointments";
-import { ProviderNotes } from "./pages/Provider/Notes";
-import { ProviderPrescriptions } from "./pages/Provider/Prescriptions";
+import { ProviderLayout } from "./Pages/Provider/Layout";
+import { ProviderDashboard } from "./Pages/Provider/Dashboard";
+import { ProviderPatients } from "./Pages/Provider/Patients";
+import { ProviderDoctors } from "./Pages/Provider/Doctors";
+import { ProviderAppointments } from "./Pages/Provider/Appointments";
+import { ProviderNotes } from "./Pages/Provider/Notes";
+import { ProviderPrescriptions } from "./Pages/Provider/Prescriptions";
 
 // The Home component is defined below in this file, so no import needed!
 
