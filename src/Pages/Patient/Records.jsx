@@ -1,6 +1,6 @@
 import { Download, FlaskConical, FileText, Syringe, HeartPulse } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/Card";
+import { PageHeader } from "../../components/PageHeader";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/Card";
 
 const labs = [
   { name: "Complete Blood Count", date: "Jun 18, 2026", status: "Normal", color: "text-success-foreground bg-success/15" },

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Send, Search } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { Card, CardContent } from "../../components/ui/Card";
-import { Input } from "../../components/ui/Input";
-import { Button } from "../../components/ui/Button";
+import { PageHeader } from "../../components/PageHeader";
+import { Card, CardContent } from "../../components/Card";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
 
 const threads = [
   { id: "T1", name: "Dr. Evelyn Park", specialty: "Cardiology", preview: "Looking forward to seeing you Friday — please bring your BP log.", time: "10m", unread: 1, initials: "EP" },

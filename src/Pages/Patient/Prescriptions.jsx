@@ -1,7 +1,7 @@
 import { Pill, RefreshCw } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/Card";
-import { Button } from "../../components/ui/Button";
+import { PageHeader } from "../../components/PageHeader";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/Card";
+import { Button } from "../../components/Button";
 
 const active = [
   { name: "Albuterol Inhaler", dose: "90 mcg", frequency: "As needed", prescribedBy: "Dr. Omar Hassan", refills: 2, lastFilled: "Jun 14, 2026" },

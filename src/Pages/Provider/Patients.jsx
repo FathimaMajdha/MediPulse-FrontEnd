@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
 import { Search, Plus, Phone, Mail, Droplet } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { StatusBadge } from "../../components/ui/StatusBadge";
-import { Card, CardContent } from "../../components/ui/Card";
-import { Input } from "../../components/ui/Input";
-import { Button } from "../../components/ui/Button";
+import { PageHeader } from "../../components/PageHeader";
+import { StatusBadge } from "../../components/StatusBadge";
+import { Card, CardContent } from "../../components/Card";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
 import { patients } from "../../lib/mock-data";
 
 export function ProviderPatients() {

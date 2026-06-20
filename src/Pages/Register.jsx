@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Activity, Mail, Lock, Eye, EyeOff, ArrowRight, HeartPulse, Stethoscope, Check } from "lucide-react";
-import { Button } from "../components/ui/Button";
-import { Input } from "../components/ui/Input";
-import { Label } from "../components/ui/Label";
-import { Checkbox } from "../components/ui/Checkbox";
+import { Button } from "../components/Button";
+import { Input } from "../components/Input";
+import { Label } from "../components/Label";
+import { Checkbox } from "../components/Checkbox";
 
 export function Register() {
   const [searchParams] = useSearchParams();

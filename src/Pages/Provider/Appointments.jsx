@@ -1,8 +1,8 @@
 import { Plus, Calendar as CalendarIcon } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { StatusBadge } from "../../components/ui/StatusBadge";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/Card";
-import { Button } from "../../components/ui/Button";
+import { PageHeader } from "../../components/PageHeader";
+import { StatusBadge } from "../../components/StatusBadge";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/Card";
+import { Button } from "../../components/Button";
 import { appointments } from "../../lib/mock-data";
 
 const hours = Array.from({ length: 10 }, (_, i) => 8 + i);

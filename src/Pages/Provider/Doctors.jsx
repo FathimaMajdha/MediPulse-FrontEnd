@@ -1,8 +1,8 @@
 import { Star, Users as UsersIcon } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { StatusBadge } from "../../components/ui/StatusBadge";
-import { Card, CardContent } from "../../components/ui/Card";
-import { Button } from "../../components/ui/Button";
+import { PageHeader } from "../../components/PageHeader";
+import { StatusBadge } from "../../components/StatusBadge";
+import { Card, CardContent } from "../../components/Card";
+import { Button } from "../../components/Button";
 import { doctors } from "../../lib/mock-data";
 
 export function ProviderDoctors() {

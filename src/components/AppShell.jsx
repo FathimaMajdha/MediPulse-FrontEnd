@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Activity, Bell, Search, Menu, X } from "lucide-react";
-import { useMobile } from "../../hooks/useMobile";
+import { useMobile } from "../hooks/useMobile";
 
 export function AppShell({ children, navLabel, navItems, userName, userRole, userInitials }) {
   const isMobile = useMobile();

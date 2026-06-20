@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { Button } from "../components/ui/Button";
-import { Input } from "../components/ui/Input";
-import { Textarea } from "../components/ui/Textarea";
-import { Label } from "../components/ui/Label";
-import { Card, CardContent } from "../components/ui/Card";
+import { Button } from "../components/Button";
+import { Input } from "../components/Input";
+import { Textarea } from "../components/Textarea";
+import { Label } from "../components/Label";
+import { Card, CardContent } from "../components/Card";
 import {
   Activity,
   ArrowRight,
@@ -21,7 +21,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { Footer } from "../components/ui/Footer";
+import { Footer } from "../components/Footer";
 import { useState } from "react";
 
 // Testimonials data

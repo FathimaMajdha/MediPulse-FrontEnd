@@ -20,8 +20,8 @@ import {
   YAxis,
 } from "recharts";
 
-import { PageHeader } from "../../components/ui/PageHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/Card";
+import { PageHeader } from "../../components/PageHeader";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/Card";
 
 const vitals = [
   { date: "Jun 12", systolic: 124, diastolic: 80, glucose: 102 },

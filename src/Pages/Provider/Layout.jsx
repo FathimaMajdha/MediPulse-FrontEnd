@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { LayoutDashboard, Users, Stethoscope, CalendarDays, FileText, Pill } from "lucide-react";
-import { AppShell } from "../../components/ui/AppShell";
+import { AppShell } from "../../components/AppShell";
 
 const items = [
   { title: "Dashboard", url: "/provider", icon: LayoutDashboard },

@@ -1,7 +1,7 @@
 import { FilePlus2 } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { Card, CardContent } from "../../components/ui/Card";
-import { Button } from "../../components/ui/Button";
+import { PageHeader } from "../../components/PageHeader";
+import { Card, CardContent } from "../../components/Card";
+import { Button } from "../../components/Button";
 import { notes } from "../../lib/mock-data";
 
 const sections = [

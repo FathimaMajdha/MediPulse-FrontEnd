@@ -21,9 +21,9 @@ import {
   YAxis,
 } from "recharts";
 
-import { PageHeader } from "../../components/ui/PageHeader";
-import { StatusBadge } from "../../components/ui/StatusBadge";
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/Card";
+import { PageHeader } from "../../components/PageHeader";
+import { StatusBadge } from "../../components/StatusBadge";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/Card";
 import { appointments, analyticsWeekly, departmentLoad, patients } from "../../lib/mock-data";
 
 const COLORS = [

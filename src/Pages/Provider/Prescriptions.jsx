@@ -1,8 +1,8 @@
 import { Pill, Plus } from "lucide-react";
-import { PageHeader } from "../../components/ui/PageHeader";
-import { Card, CardContent } from "../../components/ui/Card";
-import { Button } from "../../components/ui/Button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/ui/Table";
+import { PageHeader } from "../../components/PageHeader";
+import { Card, CardContent } from "../../components/Card";
+import { Button } from "../../components/Button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../components/Table";
 import { prescriptions } from "../../lib/mock-data";
 
 export function ProviderPrescriptions() {

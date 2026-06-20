@@ -1,4 +1,4 @@
-import { cn } from "../../lib/utils";
+import { cn } from "../lib/utils";
 
 const map = {
   Active: "bg-primary/10 text-primary",
