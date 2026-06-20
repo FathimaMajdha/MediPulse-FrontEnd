@@ -22,7 +22,7 @@ import {
   ChevronUp,
 } from "lucide-react";
 import { Footer } from "../components/Footer";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 // Testimonials data
 const testimonials = [
@@ -91,9 +91,57 @@ function StarRating({ rating }) {
 }
 
 export function Home() {
-  
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
   const displayedTestimonials = showAllTestimonials ? testimonials : testimonials.slice(0, 3);
+  const [hasScrolledToHash, setHasScrolledToHash] = useState(false);
+
+  // Create refs for each section
+  const featuresRef = useRef(null);
+  const portalsRef = useRef(null);
+  const testimonialsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  // Scroll function
+  const scrollToSection = (ref) => {
+    if (ref && ref.current) {
+      const navbarHeight = 64; // Height of sticky navbar
+      const elementPosition = ref.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Handle hash in URL on initial load only
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash && !hasScrolledToHash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        setTimeout(() => {
+          const navbarHeight = 64;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          setHasScrolledToHash(true);
+        }, 100);
+      }
+    }
+  }, [hasScrolledToHash]);
+
+  // Handle scroll when clicking on nav links
+  const handleNavClick = (e, ref, sectionId) => {
+    e.preventDefault();
+    scrollToSection(ref);
+    // Update URL hash without causing scroll
+    history.pushState(null, null, `#${sectionId}`);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -107,12 +155,35 @@ export function Home() {
             <span className="font-display text-lg font-semibold tracking-tight">MediPulse</span>
           </Link>
           <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#features" className="hover:text-foreground transition-colors">Features</a>
-            <a href="#portals" className="hover:text-foreground transition-colors">Portals</a>
-            <a href="#testimonials" className="hover:text-foreground transition-colors">Testimonials</a>
-            <a href="#contact" className="hover:text-foreground transition-colors">Contact Us</a>
+            <a 
+              href="#features" 
+              onClick={(e) => handleNavClick(e, featuresRef, 'features')}
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
+              Features
+            </a>
+            <a 
+              href="#portals" 
+              onClick={(e) => handleNavClick(e, portalsRef, 'portals')}
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
+              Portals
+            </a>
+            <a 
+              href="#testimonials" 
+              onClick={(e) => handleNavClick(e, testimonialsRef, 'testimonials')}
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
+              Testimonials
+            </a>
+            <a 
+              href="#contact" 
+              onClick={(e) => handleNavClick(e, contactRef, 'contact')}
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
+              Contact Us
+            </a>
           </nav>
-         
         </div>
       </header>
 
@@ -203,27 +274,11 @@ export function Home() {
       </section>
 
       {/* Portals */}
-      <section id="portals" className="mx-auto max-w-7xl px-6 py-20">
-        {/* Stats with testimonials */}
-        <div className="mb-24 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div className="rounded-2xl bg-gradient-primary p-6 text-primary-foreground text-center">
-            <div className="text-3xl font-display font-semibold">4.9</div>
-            <div className="flex items-center justify-center gap-1 mt-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-current" />
-              ))}
-            </div>
-            <div className="text-sm opacity-90 mt-2">Average rating from 500+ users</div>
-          </div>
-          <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
-            <div className="text-3xl font-display font-semibold text-foreground">1,200+</div>
-            <div className="text-sm text-muted-foreground mt-1">Active clinicians</div>
-          </div>
-          <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
-            <div className="text-3xl font-display font-semibold text-foreground">98%</div>
-            <div className="text-sm text-muted-foreground mt-1">Patient satisfaction rate</div>
-          </div>
-        </div>
+      <section 
+        id="portals" 
+        ref={portalsRef}
+        className="mx-auto max-w-7xl px-6 py-20 scroll-mt-16"
+      >
         <div className="mb-12 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">Two portals, one record</p>
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight">
@@ -264,7 +319,11 @@ export function Home() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="mx-auto max-w-7xl px-6 py-20">
+      <section 
+        id="testimonials" 
+        ref={testimonialsRef}
+        className="mx-auto max-w-7xl px-6 py-20 scroll-mt-16"
+      >
         <div className="mb-12 text-center">
           <div className="flex items-center justify-center gap-2 text-primary">
             <Star className="h-5 w-5 fill-primary" />
@@ -326,18 +385,18 @@ export function Home() {
             </button>
           </div>
         )}
-
-        
       </section>
 
       {/* Features */}
-      <section id="features" className="border-y border-border bg-muted/40">
-      <div className=" text-center">
-          
-          <h2 className="mt-12 font-display text-4xl font-semibold tracking-tight">
+      <section 
+        id="features" 
+        ref={featuresRef}
+        className="border-y border-border bg-muted/40 scroll-mt-16"
+      >
+        <div className="text-center pt-12">
+          <h2 className="font-display text-4xl font-semibold tracking-tight">
             Features
           </h2>
-         
         </div>
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -376,10 +435,14 @@ export function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="mx-auto max-w-2xl px-6 py-24">
+      <section 
+        id="contact" 
+        ref={contactRef}
+        className="mx-auto max-w-2xl px-6 py-24 scroll-mt-16"
+      >
         <div className="mb-12 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">Get in touch</p>
-          <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+          <h2 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
             Contact Us
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
